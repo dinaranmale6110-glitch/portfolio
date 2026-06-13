@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinanath Ranmale | Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111827;
+      background: #eef2ff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.14), transparent 28%),
+                  linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+    }
+    a {
+      color: inherit;
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 56px;
+    }
+    .hero {
+      display: grid;
+      gap: 28px;
+      padding: 36px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 32px;
+      box-shadow: 0 32px 70px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+    }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .hero-top .intro {
+      max-width: 640px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: #4f46e5;
+      display: inline-block;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 4vw, 3.8rem);
+      line-height: 1.02;
+    }
+    .subtitle {
+      margin: 18px 0 0;
+      color: #4b5563;
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+    .button-primary {
+      background: #4338ca;
+      color: #ffffff;
+      box-shadow: 0 14px 30px rgba(67, 56, 202, 0.18);
+    }
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(67, 56, 202, 0.22);
+    }
+    .button-secondary {
+      background: rgba(15, 23, 42, 0.05);
+      color: #111827;
+    }
+    .hero-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      align-items: start;
+    }
+    .hero-copy {
+      display: grid;
+      gap: 18px;
+    }
+    .hero-copy p {
+      margin: 0;
+      color: #475569;
+    }
+    .stats {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .stat {
+      background: #eef2ff;
+      border-radius: 22px;
+      padding: 18px 20px;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: center;
+      border: 1px solid rgba(99, 102, 241, 0.16);
+    }
+    .stats .label {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #475569;
+    }
+    .sections {
+      display: grid;
+      gap: 24px;
+      margin-top: 34px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      padding: 32px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+    }
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+    .card p,
+    .card li {
+      color: #475569;
+      font-size: 1rem;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin: 0;
+      list-style: none;
+    }
+    .card ul li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 14px;
+    }
+    .card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #4f46e5;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .project-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .project {
+      background: #f8fafc;
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid rgba(99, 102, 241, 0.12);
+    }
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+    .project p {
+      margin: 0 0 12px;
+      color: #475569;
+      font-size: 0.96rem;
+    }
+    .project a {
+      color: #4338ca;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .contact {
+      display: grid;
+      gap: 16px;
+      border-radius: 24px;
+      background: #eef2ff;
+      padding: 26px;
+    }
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .contact-list li {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: #334155;
+    }
+    .contact-list li strong {
+      width: 90px;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    footer {
+      text-align: center;
+      margin-top: 34px;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #4338ca;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 620px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+      .hero {
+        padding: 28px;
+      }
+      .hero-actions,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      .hero-top {
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-top">
+        <div class="intro">
+          <p class="eyebrow">Professional Portfolio</p>
+          <h1>Dinanath Ranmale</h1>
+          <p class="subtitle">I create polished digital experiences with a focus on clean interfaces, strong performance, and easy user journeys. With 2 years of experience, I help businesses turn ideas into reliable web solutions.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button-primary" href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">View LinkedIn</a>
+          <a class="button-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p>I enjoy working on responsive websites, improving user interactions, and supporting product teams with thoughtful front-end development. My goal is to blend modern design with dependable implementation.</p>
+          <ul class="pill-list">
+            <li class="pill">Problem Solving</li>
+            <li class="pill">Collaborative Teamwork</li>
+            <li class="pill">Continuous Learning</li>
+          </ul>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            2+\r
+            <span class="label">Years Experience</span>
+          </div>
+          <div class="stat">
+            20+\
+            <span class="label">Projects Delivered</span>
+          </div>
+          <div class="stat">
+            100%\
+            <span class="label">Focus on Quality</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <article class="card">
+        <h2>About Me</h2>
+        <p>I am an adaptable developer with a strong attention to detail, motivated by solving user-centered problems. My experience covers front-end development, responsive design, and hands-on collaboration across product workflows.</p>
+        <p>Outside of work, I enjoy exploring new tools, improving site performance, and refining workflows that make digital products more accessible and intuitive.</p>
+      </article>
+
+      <article class="card">
+        <h2>Experience</h2>
+        <div class="stats">
+          <div class="stat">
+            2+
+            <span class="label">Years in Industry</span>
+          </div>
+          <div class="stat">
+            5+
+            <span class="label">Companies & Teams</span>
+          </div>
+          <div class="stat">
+            15+
+            <span class="label">Delivered Features</span>
+          </div>
+        </div>
+        <ul>
+          <li>Built responsive website components and landing pages using modern front-end techniques.</li>
+          <li>Improved page usability and accessibility for a smoother user experience.</li>
+          <li>Worked closely with stakeholders to understand goals and deliver polished outcomes.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Skills</h2>
+        <ul class="pill-list">
+          <li class="pill">HTML</li>
+          <li class="pill">CSS</li>
+          <li class="pill">JavaScript</li>
+          <li class="pill">Responsive Design</li>
+          <li class="pill">User Experience</li>
+          <li class="pill">Performance Optimization</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Highlights</h2>
+        <ul>
+          <li>Positive team collaboration and strong communication across project phases.</li>
+          <li>Focus on producing stable, maintainable code with thoughtful layout and structure.</li>
+          <li>Experience delivering work that aligns with business goals and user needs.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project">
+            <h3>Responsive Marketing Page</h3>
+            <p>Created a polished landing page layout with a strong visual hierarchy, responsive mobile support, and fast loading experience.</p>
+            <a href="#contact">Learn more</a>
+          </div>
+          <div class="project">
+            <h3>UI Enhancement Work</h3>
+            <p>Redesigned UI elements to improve clarity, accessibility, and ease of interaction across desktop and mobile screens.</p>
+            <a href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </article>
+
+      <article id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Ready to connect for web development work, site improvements, or product collaboration. I respond quickly and enjoy working with teams that want a polished digital presence.</p>
+        <ul class="contact-list">
+          <li><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">dinanath-ranmale-12a066206</a></span></li>
+          <li><strong>Email</strong><span>hello@dinanath.dev</span></li>
+          <li><strong>Availability</strong><span>Open to new opportunities</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      <p>Portfolio crafted for Dinanath Ranmale • Connect on <a href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">LinkedIn</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>
