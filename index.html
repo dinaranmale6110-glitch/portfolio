@@ -6,47 +6,191 @@
   <title>Dinanath Somnath Ranmale | Portfolio</title>
   <style>
     :root {
-      color-scheme: light;
+      --background: #eef4ff;
+      --surface: #ffffff;
+      --surface-strong: #eff6ff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #1d4ed8;
+      --primary-dark: #0f4cc6;
+      --border: rgba(59, 130, 246, 0.18);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #111827;
-      background: #eef2ff;
     }
     * {
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.14), transparent 28%),
-                  linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 26%),
+                  linear-gradient(180deg, #f8fbff 0%, var(--background) 100%);
     }
     a {
       color: inherit;
+      text-decoration: none;
     }
     .page {
-      max-width: 980px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 40px 24px 56px;
+      padding: 32px 24px 56px;
     }
-    .hero {
-      display: grid;
-      gap: 28px;
-      padding: 36px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      border-radius: 32px;
-      box-shadow: 0 32px 70px rgba(15, 23, 42, 0.08);
-      backdrop-filter: blur(10px);
-    }
-    .hero-top {
+    .site-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 22px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0 24px;
     }
-    .hero-top .intro {
-      max-width: 640px;
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .site-nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .site-nav a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 180ms ease;
+    }
+    .site-nav a:hover {
+      color: var(--primary);
+    }
+    .hero {
+      position: relative;
+      display: grid;
+      gap: 32px;
+      padding: 42px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(59, 130, 246, 0.14);
+      border-radius: 36px;
+      box-shadow: 0 32px 70px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: rgba(59, 130, 246, 0.12);
+      border-radius: 50%;
+      filter: blur(20px);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+      background: rgba(59, 130, 246, 0.08);
+      border-radius: 50%;
+      filter: blur(18px);
+    }
+    .hero-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-animation {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 280px;
+      height: 280px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-animation .pulse-badge,
+    .hero-animation .floating-icon {
+      position: absolute;
+      display: grid;
+      place-items: center;
+    }
+    .hero-animation .pulse-badge {
+      top: 50%;
+      left: 50%;
+      width: 130px;
+      height: 130px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      overflow: hidden;
+    }
+    .hero-animation .pulse-badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.22);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .hero-animation .pulse-badge .icon {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+      display: grid;
+      place-items: center;
+      z-index: 1;
+    }
+    .hero-animation .floating-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      box-shadow: 0 20px 36px rgba(15, 23, 42, 0.08);
+      animation: float 4.5s ease-in-out infinite;
+    }
+    .hero-animation .floating-icon:nth-child(1) {
+      top: 12%;
+      left: 22%;
+      animation-delay: 0s;
+    }
+    .hero-animation .floating-icon:nth-child(2) {
+      top: 18%;
+      right: 12%;
+      animation-delay: 0.3s;
+    }
+    .hero-animation .floating-icon:nth-child(3) {
+      bottom: 18%;
+      left: 10%;
+      animation-delay: 0.6s;
+    }
+    .hero-animation svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--primary);
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.65; }
+      50% { transform: scale(1.18); opacity: 0.18; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-copy {
+      display: grid;
+      gap: 24px;
     }
     .eyebrow {
       display: inline-flex;
@@ -56,139 +200,201 @@
       letter-spacing: 0.24em;
       font-size: 0.78rem;
       font-weight: 700;
-      color: #4f46e5;
-      margin-bottom: 14px;
+      color: var(--primary);
     }
     .eyebrow::before {
       content: "";
       width: 4px;
       height: 4px;
-      border-radius: 999px;
-      background: #4f46e5;
+      border-radius: 50%;
+      background: var(--primary);
       display: inline-block;
     }
     h1 {
       margin: 0;
-      font-size: clamp(2.6rem, 4vw, 3.8rem);
-      line-height: 1.02;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      color: var(--text);
     }
-    .subtitle {
-      margin: 18px 0 0;
-      color: #4b5563;
-      font-size: 1.02rem;
-      max-width: 720px;
+    .hero-copy p {
+      margin: 0;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
     .hero-actions {
       display: flex;
-      align-items: center;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
     .button-primary,
     .button-secondary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       border-radius: 999px;
-      padding: 14px 20px;
+      padding: 14px 24px;
       font-weight: 700;
-      text-decoration: none;
       transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
     }
     .button-primary {
-      background: #4338ca;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #ffffff;
-      box-shadow: 0 14px 30px rgba(67, 56, 202, 0.18);
+      box-shadow: 0 16px 30px rgba(59, 130, 246, 0.18);
     }
     .button-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 34px rgba(67, 56, 202, 0.22);
     }
     .button-secondary {
-      background: rgba(15, 23, 42, 0.05);
-      color: #111827;
+      border: 1px solid rgba(59, 130, 246, 0.18);
+      color: var(--primary);
+      background: rgba(59, 130, 246, 0.08);
     }
-    .hero-grid {
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .hero-stat {
+      background: var(--surface-strong);
+      border: 1px solid rgba(59, 130, 246, 0.18);
+      border-radius: 24px;
+      padding: 22px;
+      text-align: center;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .hero-stat span {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .hero-animation {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 280px;
+      height: 280px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-animation .pulse-badge,
+    .hero-animation .floating-icon {
+      position: absolute;
+      display: grid;
+      place-items: center;
+    }
+    .hero-animation .pulse-badge {
+      top: 50%;
+      left: 50%;
+      width: 130px;
+      height: 130px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      overflow: hidden;
+    }
+    .hero-animation .pulse-badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.22);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .hero-animation .pulse-badge .icon {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+      display: grid;
+      place-items: center;
+      z-index: 1;
+    }
+    .hero-animation .floating-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      box-shadow: 0 20px 36px rgba(15, 23, 42, 0.08);
+      animation: float 4.5s ease-in-out infinite;
+    }
+    .hero-animation .floating-icon:nth-child(1) {
+      top: 12%;
+      left: 22%;
+      animation-delay: 0s;
+    }
+    .hero-animation .floating-icon:nth-child(2) {
+      top: 18%;
+      right: 12%;
+      animation-delay: 0.3s;
+    }
+    .hero-animation .floating-icon:nth-child(3) {
+      bottom: 18%;
+      left: 10%;
+      animation-delay: 0.6s;
+    }
+    .hero-animation svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--primary);
+    }
+    .hero-panel,
+    .hero-copy,
+    .hero-stat-grid,
+    .panel-card {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.85s ease-out both;
+    }
+    .hero-panel {
       display: grid;
       gap: 20px;
-      grid-template-columns: minmax(0, 1fr) 260px;
-      align-items: start;
     }
-    .hero-copy {
+    .panel-card {
+      padding: 28px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.12), rgba(255, 255, 255, 0.9));
+      border: 1px solid rgba(59, 130, 246, 0.16);
       display: grid;
       gap: 18px;
     }
-    .hero-copy p {
+    .panel-card h3 {
       margin: 0;
-      color: #475569;
+      font-size: 1.25rem;
+      color: var(--text);
     }
-    .stats {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .stat {
-      background: #eef2ff;
-      border-radius: 22px;
-      padding: 18px 20px;
-      font-weight: 700;
-      color: #1e293b;
-      text-align: center;
-      border: 1px solid rgba(99, 102, 241, 0.16);
-    }
-    .stats .label {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: #475569;
-    }
-    .sections {
-      display: grid;
-      gap: 24px;
-      margin-top: 34px;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 28px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      padding: 32px;
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
-    }
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 18px;
-      font-size: 1.45rem;
-      letter-spacing: -0.02em;
-    }
-    .card p,
-    .card li {
-      color: #475569;
-      font-size: 1rem;
-    }
-    .card ul {
-      padding-left: 20px;
+    .panel-card p {
       margin: 0;
-      list-style: none;
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .card ul li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 14px;
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-12px) translateX(8px); }
     }
-    .card ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #4f46e5;
-      font-size: 1.1rem;
-      line-height: 1;
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.22); }
+      70% { box-shadow: 0 0 0 18px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     .pill-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -196,234 +402,344 @@
     .pill {
       display: inline-flex;
       align-items: center;
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
-      background: #eff6ff;
-      color: #1e3a8a;
-      font-weight: 600;
+      background: #ffffff;
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      color: var(--primary);
+      font-weight: 700;
       font-size: 0.95rem;
     }
-    .project-grid {
+    .section {
+      margin-top: 64px;
+    }
+    .section-header {
+      display: grid;
+      gap: 12px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      line-height: 1.05;
+      color: var(--text);
+    }
+    .about-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1.4fr 0.8fr;
+      margin-top: 28px;
+    }
+    .section-copy {
       display: grid;
       gap: 18px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      color: var(--muted);
+      line-height: 1.8;
     }
-    .project {
-      background: #f8fafc;
-      border-radius: 22px;
-      padding: 22px;
-      border: 1px solid rgba(99, 102, 241, 0.12);
+    .feature-grid {
+      display: grid;
+      gap: 18px;
     }
-    .project h3 {
-      margin: 0 0 10px;
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid rgba(59, 130, 246, 0.14);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.05);
+    }
+    .feature-card h3 {
+      margin: 0 0 12px;
+      color: var(--text);
       font-size: 1.1rem;
     }
-    .project p {
-      margin: 0 0 12px;
-      color: #475569;
-      font-size: 0.96rem;
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
-    .project a {
-      color: #4338ca;
-      font-weight: 700;
-      text-decoration: none;
+    .service-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 28px;
+    }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid rgba(59, 130, 246, 0.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.05);
+    }
+    .service-card h3 {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.15rem;
+    }
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
     }
     .contact {
       display: grid;
-      gap: 16px;
-      border-radius: 24px;
-      background: #eef2ff;
-      padding: 26px;
+      gap: 28px;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.14);
+      border-radius: 36px;
+      padding: 40px;
+      margin-top: 40px;
     }
-    .contact-list {
+    .contact-grid {
       display: grid;
-      gap: 10px;
+      gap: 24px;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+    .contact-card {
+      background: var(--surface);
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid rgba(59, 130, 246, 0.12);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.05);
+    }
+    .contact-card h3 {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 1.3rem;
+    }
+    .contact-card p,
+    .contact-card li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .contact-card ul {
       margin: 0;
       padding: 0;
       list-style: none;
+      display: grid;
+      gap: 12px;
     }
-    .contact-list li {
+    .contact-card li {
       display: flex;
       gap: 12px;
-      align-items: center;
-      color: #334155;
+      align-items: flex-start;
     }
-    .contact-list li strong {
-      width: 90px;
-      color: #0f172a;
-      font-weight: 700;
+    .contact-card li strong {
+      width: 110px;
+      color: var(--text);
     }
     footer {
       text-align: center;
-      margin-top: 34px;
-      color: #475569;
+      margin-top: 36px;
+      color: var(--muted);
       font-size: 0.95rem;
     }
-    footer a {
-      color: #4338ca;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    @media (max-width: 880px) {
-      .hero-grid {
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .service-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero {
+        padding: 32px;
       }
     }
-    @media (max-width: 620px) {
+    @media (max-width: 640px) {
       .page {
         padding: 24px 16px 40px;
       }
-      .hero {
-        padding: 28px;
+      .section-title {
+        font-size: 2rem;
       }
-      .hero-actions,
-      .stats {
+      .hero-stat-grid {
         grid-template-columns: 1fr;
       }
-      .hero-top {
-        align-items: stretch;
+      .site-nav {
+        gap: 12px;
+      }
+      .hero {
+        padding: 28px 20px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
+    <header class="site-header">
+      <div class="brand">Dinanath Ranmale</div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
     <section class="hero">
-      <div class="hero-top">
-        <div class="intro">
-          <p class="eyebrow">Medical Coding Professional</p>
-          <h1>Dinanath Somnath Ranmale</h1>
-          <p class="subtitle">Certified Professional Coder with 1 year 6 months of experience in inpatient and outpatient medical coding. Skilled in ICD-10-CM, CPT, HCPCS Level II, HCC risk adjustment, and regulatory compliance.</p>
+      <div class="hero-animation" aria-hidden="true">
+        <div class="floating-icon" title="Medical cross">
+          <svg viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
         </div>
-        <div class="hero-actions">
-          <a class="button-primary" href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">View LinkedIn</a>
-          <a class="button-secondary" href="#contact">Contact Me</a>
+        <div class="pulse-badge">
+          <div class="icon" title="Heart pulse">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+        </div>
+        <div class="floating-icon" title="Stethoscope">
+          <svg viewBox="0 0 24 24"><path d="M17 2a1 1 0 0 0-1 1v5a5 5 0 0 1-10 0V3a1 1 0 1 0-2 0v5a7 7 0 0 0 14 0V3a1 1 0 0 0-1-1zm-7 10a3 3 0 0 0 3-3V3h-6v6a3 3 0 0 0 3 3zM7 18v3a3 3 0 0 0 6 0v-3h-2v3a1 1 0 0 1-2 0v-3H7zm10-2h-2v5h-2v-5H9v-2h8v2z"/></svg>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Medical Coding Specialist</p>
+          <h1>Let's make modern healthcare coding work for you.</h1>
+          <p>Hi, I'm Dinanath. I blend medical coding accuracy with healthcare compliance to deliver reliable inpatient and outpatient revenue cycle support.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">View LinkedIn</a>
+            <a class="button-secondary" href="#contact">Hire Me</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-card">
+            <h3>1.5+ Years experience</h3>
+            <p>Medical coding across inpatient and outpatient records with strong ICD-10, CPT, HCPCS, and HCC expertise.</p>
+          </div>
+          <div class="panel-card">
+            <h3>Reliable results</h3>
+            <p>98% accuracy in coding and audit-ready documentation for revenue integrity and compliance.</p>
+          </div>
         </div>
       </div>
 
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p>Experienced medical coder with a strong foundation in medical terminology, anatomy, and HIPAA/CMS compliance. I deliver audit-ready chart review, accurate coding, and revenue cycle support for inpatient and outpatient care.</p>
-          <ul class="pill-list">
-            <li class="pill">ICD-10-CM</li>
-            <li class="pill">CPT</li>
-            <li class="pill">HCPCS Level II</li>
-            <li class="pill">HCC Risk Adjustment</li>
-          </ul>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">1.5+<span>Years Experience</span></div>
+        <div class="hero-stat">CPC<span>AAPC Certified</span></div>
+        <div class="hero-stat">98%<span>Coding Accuracy</span></div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-header">
+        <span class="section-label">About me</span>
+        <h2 class="section-title">Turning medical data into accurate patient care support.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="section-copy">
+          <p>Certified Professional Coder with experience in both inpatient and outpatient environments. I deliver high-quality coding, accurate claims documentation, and compliance with HIPAA and CMS requirements.</p>
+          <p>My focus is on delivering reliable, audit-ready work for healthcare providers and revenue cycle teams. I help medical organizations reduce denials and improve financial accuracy.</p>
         </div>
-        <div class="stats">
-          <div class="stat">
-            1.5+
-            <span class="label">Years Experience</span>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Healthcare compliance</h3>
+            <p>Strong knowledge of HIPAA, CMS documentation, and reimbursement regulations.</p>
           </div>
-          <div class="stat">
-            CPC
-            <span class="label">AAPC Certified</span>
+          <div class="feature-card">
+            <h3>Accurate chart coding</h3>
+            <p>ICD-10-CM, CPT, HCPCS Level II, and HCC risk adjustment coding with consistent quality.</p>
           </div>
-          <div class="stat">
-            98%
-            <span class="label">Coding Accuracy</span>
+          <div class="feature-card">
+            <h3>Revenue cycle support</h3>
+            <p>Audit-ready coding and documentation to help secure clean claims and faster reimbursements.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="sections">
-      <article class="card">
-        <h2>Profile</h2>
-        <p>Certified CPC (Certified Professional Coder) with 1 year 6 months of experience in medical coding for inpatient and outpatient procedures. Skilled in ICD-10-CM, CPT and HCPCS Level II coding with strong knowledge of medical terminology, anatomy, and regulatory compliance (HIPAA, CMS).</p>
-      </article>
+    <section id="services" class="section">
+      <div class="section-header">
+        <span class="section-label">Services</span>
+        <h2 class="section-title">What I offer</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Medical Coding</h3>
+          <p>Accurate inpatient and outpatient ICD-10, CPT, HCPCS, and HCC risk adjustment coding for healthcare providers.</p>
+        </div>
+        <div class="service-card">
+          <h3>Audit Support</h3>
+          <p>Detailed chart reviews, documentation accuracy checks, and compliance support for audit readiness.</p>
+        </div>
+        <div class="service-card">
+          <h3>Revenue Cycle</h3>
+          <p>Claims quality improvement and denial reduction support focused on better reimbursement outcomes.</p>
+        </div>
+      </div>
+    </section>
 
-      <article class="card">
-        <h2>Education</h2>
-        <ul>
-          <li><strong>Bachelor of Pharmacy</strong> • Savitribai Phule Pune University, Sanjivani College of Pharmaceutical Education and Research, Kopargaon (2021–2024)
-            <ul>
-              <li>Overall CGPA: 8.4</li>
-              <li>Ranked among the top 5% of the batch</li>
-              <li>Relevant coursework in Pharmaceutics and Pharmacology</li>
-            </ul>
-          </li>
-          <li><strong>Higher Secondary Education</strong> • Shri Sairam Junior College, Korhale, Shirdi
-            <ul>
-              <li>Science stream • 68.00%</li>
-            </ul>
-          </li>
-          <li><strong>Secondary Education</strong> • New English School, Korhale, Shirdi
-            <ul>
-              <li>10th Grade • 90.60%</li>
-            </ul>
-          </li>
-        </ul>
-      </article>
+    <section id="skills" class="section">
+      <div class="section-header">
+        <span class="section-label">Skills</span>
+        <h2 class="section-title">Tools and expertise I use</h2>
+      </div>
+      <ul class="pill-list">
+        <li class="pill">ICD-10-CM</li>
+        <li class="pill">CPT</li>
+        <li class="pill">HCPCS Level II</li>
+        <li class="pill">HCC Risk Adjustment</li>
+        <li class="pill">CMS / HIPAA</li>
+        <li class="pill">Medical Audits</li>
+        <li class="pill">Revenue Cycle</li>
+        <li class="pill">Chart Review</li>
+      </ul>
+    </section>
 
-      <article class="card">
-        <h2>Skills</h2>
-        <ul class="pill-list">
-          <li class="pill">Microsoft Excel</li>
-          <li class="pill">MS PowerPoint</li>
-          <li class="pill">MS Word</li>
-          <li class="pill">ICD-10-CM</li>
-          <li class="pill">CPT</li>
-          <li class="pill">HCPCS Level II</li>
-          <li class="pill">HCC Risk Adjustment</li>
-          <li class="pill">DRG Validation</li>
-        </ul>
-      </article>
+    <section id="projects" class="section">
+      <div class="section-header">
+        <span class="section-label">Projects</span>
+        <h2 class="section-title">Selected work and achievements</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>HCC Risk Adjustment</h3>
+          <p>Managed chronic condition capture for Medicare Advantage and ACA programs.</p>
+        </div>
+        <div class="service-card">
+          <h3>Revenue validation</h3>
+          <p>Maintained coding accuracy across clinical audits and provider reviews.</p>
+        </div>
+        <div class="service-card">
+          <h3>Quality performance</h3>
+          <p>Awarded top performer for audit accuracy and consistency in HCC chart reviews.</p>
+        </div>
+      </div>
+    </section>
 
-      <article class="card">
-        <h2>Certifications</h2>
-        <ul>
-          <li><strong>Certified Professional Coder (CPC)</strong> • AAPC
-            <ul>
-              <li>Issued: August 2025</li>
-            </ul>
-          </li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Work Experience</h2>
-        <p><strong>Advantmed India LLP</strong> • Medical Coder<br>Pune, Maharashtra | Aug 2024 – Feb 2026</p>
-        <ul>
-          <li>Coded outpatient and HCC charts using ICD-10-CM and CPT coding standards.</li>
-          <li>Maintained 98% coding accuracy in internal audits while meeting productivity benchmarks.</li>
-          <li>Supported cross-project work between MA and ACA business lines.</li>
-          <li>Collaborated with QA to correct and prevent recurring coding errors.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Projects & Achievements</h2>
-        <ul>
-          <li>HCSC (HCC) – Medicare Advantage risk adjustment coding.</li>
-          <li>Optum (HCC) – Chronic condition capture and quality improvement.</li>
-          <li>Centene MA (HCC) – Validation of chronic and acute diagnoses.</li>
-          <li>Centene ACA (HHS) – Risk adjustment coding for pregnancy and OB-GYN charts.</li>
-          <li>Awarded Top Performer for maintaining 100% quality in HCC audits in April 2025.</li>
-          <li>Selected for the Kevlar process for maintaining accuracy.</li>
-        </ul>
-      </article>
-
-      <article id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Reach out for medical coding opportunities, audit support, revenue cycle improvement, or compliance-focused projects.</p>
-        <ul class="contact-list">
-          <li><strong>Phone</strong><span>+91 97303 28937</span></li>
-          <li><strong>Email</strong><span>dinaranmale6110@gmail.com</span></li>
-          <li><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">dinanath-ranmale-12a066206</a></span></li>
-        </ul>
-      </article>
+    <section id="contact" class="contact">
+      <div class="section-header">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Ready to work together?</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Get in touch</h3>
+          <p>Reach out for medical coding support, audit projects, or revenue cycle improvement work.</p>
+          <ul>
+            <li><strong>Phone</strong>+91 97303 28937</li>
+            <li><strong>Email</strong>dinaranmale6110@gmail.com</li>
+            <li><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/dinanath-ranmale-12a066206/" target="_blank" rel="noreferrer">linkedin.com/in/dinanath-ranmale-12a066206</a></li>
+          </ul>
+        </div>
+        <div class="contact-card">
+          <h3>Availability</h3>
+          <p>Open to freelance and full-time medical coding roles. Fast turnaround, reliable communication, and audit-ready work.</p>
+        </div>
+      </div>
     </section>
 
     <footer>
-      <p>Resume page for Dinanath Somnath Ranmale • Certified Professional Coder.</p>
+      <p>© 2026 Dinanath Somnath Ranmale · Certified Professional Coder.</p>
     </footer>
   </main>
 </body>
